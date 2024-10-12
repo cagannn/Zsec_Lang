@@ -12,6 +12,8 @@ Oluşturulan değerin tipini algılayabilme (Şuanlik değişkeni bellekte tutmu
 bool->var_name2=12;
 float->var_name3=32;
 ```
+![zsec1](https://github.com/user-attachments/assets/1865d865-c407-4a62-a1cd-a9db9648c702)
+
 Fonksiyonu algılama (Fonksiyon işlevini yerine getirmiyor.)
 ```
 func func_name -> int() //Döndürülecek değerin tipi
