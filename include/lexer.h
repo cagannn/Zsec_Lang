@@ -19,13 +19,13 @@ enum tokens{
     RARROW,
     EQUL,
     END,
+    QUOL,
 
 };
 
 int* lexing(std::string& x){
-
-    int count=0;
     int* tokens;
+    char tir=34;
     tokens = new int[x.length()];
     for (int i=0; i<x.length();i++){
     
@@ -69,9 +69,11 @@ int* lexing(std::string& x){
         else if(x[i]=='='){
             tokens[i]=EQUL;
         }
+        else if(x[i]=='\"'){
+            tokens[i]=QUOL;
+        }
         else {
             tokens[i]=CHAR;
-
         }
     }
     return tokens;  
