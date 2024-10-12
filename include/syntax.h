@@ -28,7 +28,6 @@ int syntaxer(std::string code_,int* lexed, int size_){
                                 hold_int=hold_int+code_[k];
                             
                             else{
-                                std::cout<<"Girmedim"<<std::endl;
                                 varType_err();
                                 break;
                                 return 0;
