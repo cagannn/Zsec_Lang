@@ -48,8 +48,9 @@ int syntaxer(std::string code_,int* lexed, int size_){
 }
             *int_var=*p;
             std::cout<<"Bellekte olusturulan deger:"<<*int_var<<std::endl;
-            delete p;
-            p=nullptr;
+            delete p;     //Oluşabilecek bellek zafiyetlerinden dolayı belleği temizliyoruz ilerleyen zamanlarda 
+            p=nullptr;    //tanımlanan değişkenler üzerinde işlemler ve değişikler yapmayı da ekleyeceğiz.
+            free(int_var);//
         }
         if(command=="string" && lexed[i+1]==4 && lexed[i+2]==11){
             std::cout<<"string olusturulacak"<<std::endl;
