@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <typeinfo>
+#include <stdexcept> 
 #include "include/lexer.h"
 #include "include/syntax.h"
 
@@ -22,7 +23,9 @@ bool end_with(std::string file_name){
 }
 
 int main(int argc, char** argv){
-    if(end_with(argv[1]))
+    try{
+        if (argc!=0){
+        if(end_with(argv[1]))
     {
     int* array;
     std::string satir;
@@ -40,7 +43,12 @@ int main(int argc, char** argv){
        
         dosyaOku.close();
     }}
-    else
-    std::cout<<"Error";
+   
+    }
+    }catch(const std::logic_error)
+    {
+        std::cout<<"Error";
+    }
+    
     return 0;
 }
