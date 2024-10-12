@@ -1,6 +1,6 @@
-string->var_name1=32;
-int->var_name2=12;
-int->var_name3=32;
+int->var_name1=32;
+bool->var_name2=true;
+float->var_name3=2.3;
 func func_name-> int()//fonksiyonun döndüreceği değerin tipi
 {
 }
