@@ -7,23 +7,6 @@
 #include "errors.h"
 
 
-/*enum tokens{
-    LPAR,
-    RPAR,
-    NUM,
-    PLUS,
-    MINUS,
-    MUL,
-    DIV,
-    IDENTIFIER,
-    STRING,
-    SPACE,
-    CHAR,
-    RARROW,
-    EQUAL
-    END,
-    };
-*/
 int syntaxer(std::string code_,int* lexed, int size_){
     std::string command="";
     std::string var_name="";
