@@ -118,8 +118,8 @@ int syntaxer(std::string& code_,int* lexed, int size_){
             for(int l=0;l<count-2;l++){
                 str_var[l]=hold_str[l];
             }
-            delete hold_str;
             hold_str=nullptr;
+            delete hold_str;
             std::cout<<"Bellekte olusturulan deger "<<var_name<<" >> "<<str_var<<std::endl;
            
         }
@@ -182,12 +182,14 @@ int syntaxer(std::string& code_,int* lexed, int size_){
             }
         }
 
-        delete count;
+        
         count=nullptr;
-        delete hold_c;
+        delete count;
         hold_c=nullptr;
-        delete true_false;
+        delete hold_c;
         true_false=nullptr;
+        delete true_false;
+        
 
         std::cout<<"Bellekte olusturulan deger: "<<var_name<<" >> "<<*real_var<<std::endl;
     }
