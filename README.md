@@ -33,3 +33,7 @@ string->var_name4="foo";
 ```
 ![zsec2](https://github.com/user-attachments/assets/afb3bd12-1465-419f-8521-fa2a15c352a7)
 
+[!] Update
+
+  Bellek kullanımında iyileştirmeler yapıldı.
+
