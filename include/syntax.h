@@ -7,7 +7,24 @@
 #include "errors.h"
 
 
-int syntaxer(std::string code_,int* lexed, int size_){
+/*enum tokens{
+    LPAR,
+    RPAR,
+    NUM,
+    PLUS,
+    MINUS,
+    MUL,
+    DIV,
+    IDENTIFIER,
+    STRING,
+    SPACE,
+    CHAR,
+    RARROW,
+    EQUAL
+    END,
+    };
+*/
+int syntaxer(std::string& code_,int* lexed, int size_){
     std::string command="";
     std::string var_name="";
  for(int i=0;i<size_;i++){
@@ -101,6 +118,8 @@ int syntaxer(std::string code_,int* lexed, int size_){
             for(int l=0;l<count-2;l++){
                 str_var[l]=hold_str[l];
             }
+            delete hold_str;
+            hold_str=nullptr;
             std::cout<<"Bellekte olusturulan deger "<<var_name<<" >> "<<str_var<<std::endl;
            
         }
@@ -108,17 +127,49 @@ int syntaxer(std::string code_,int* lexed, int size_){
             std::cout<<"float olusturulacak"<<std::endl;
         }
         else if(command=="bool" && lexed[i+1]==4 && lexed[i+2]==11){
-            std::string true_false="";
+            int *count =new int;
+            *count=0;
             bool* real_var= new bool();
              for(int j=i+1;j<=size_;j++){
                 if(lexed[j]==12){
                     for(int k=j+1;k<size_;k++){
                         if(lexed[k]!=13){
-                            true_false=true_false+code_[k];
+                            *count=*count+1;
                         }
                         
                     }
                 }
+            }
+            char* true_false=(char* )calloc(4,sizeof(char));
+            char* tamp_code=new char[code_.length()+1];
+            for(int n=0;n<code_.length()-1;n++){
+                tamp_code[n]=code_[n];
+            }
+            int* hold_c=new int;
+            *hold_c=1;
+           
+             for(int j=i+1;j<=size_;j++){
+                if(lexed[j]==12){
+                    for(int k=j+1;k<size_;k++){
+                        if(lexed[k]!=13){
+                            true_false[*hold_c]=tamp_code[k];
+                    
+                            *hold_c=*hold_c+1;
+                            
+                        }
+                        
+                    }
+                }
+            }
+            if (true_false[1]=='t' && true_false[2]=='r' && true_false[3]=='u' && true_false[4]=='e'){
+                *real_var=true;
+            }
+            else if (true_false[1]=='f' && true_false[2]=='a' && true_false[3]=='l' && true_false[4]=='s' && true_false[5]=='e')
+            {
+                *real_var=false;;
+            }
+            else{
+                syntax_err();
             }
         for (int p=i+1;p<size_;p++){
              if(lexed[p]==11){
@@ -130,17 +181,14 @@ int syntaxer(std::string code_,int* lexed, int size_){
                 }
             }
         }
-        if(true_false=="true"){
-            *real_var=true;
-        }
-        else if (true_false=="false"){
-            *real_var=false;
-        }
-        else{
-            syntax_err();
-            break;
-            return 0;
-        }
+
+        delete count;
+        count=nullptr;
+        delete hold_c;
+        hold_c=nullptr;
+        delete true_false;
+        true_false=nullptr;
+
         std::cout<<"Bellekte olusturulan deger: "<<var_name<<" >> "<<*real_var<<std::endl;
     }
         if(command=="func" && lexed[i+1]==9 && lexed[i+2]==10){
