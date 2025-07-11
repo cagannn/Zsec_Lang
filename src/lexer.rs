@@ -5,17 +5,17 @@ pub enum TokenType {
     LPAR,       // (
     RPAR,       // )
 
-    // Operatörler
+    
     PLUS,       // +
     MINUS,      // -
     MUL,        // *
     DIV,        // /
     EQUL,       // =
-    RARROW,     // :> (senin özel operatörün)
-    COMMA,      // , (opsiyonel ama önerilir)
+    RARROW,     // :> 
+    COMMA,      // , 
 
-    // Tanımlar
-    IDENTIFIER, // Değişken/fonksiyon ismi
+   
+    IDENTIFIER,
     INT,
     FLOAT,
     AUTO,// int, float, auto, vs.
@@ -24,11 +24,11 @@ pub enum TokenType {
     BOOLEAN,    // true, false
     NUMINT,
     NUMFLOAT,
-    // Özel karakterler
-    QUOL,       // " (tırnak açma)
-    END,        // ; (satır sonu)
+   
+    QUOL,       // " (
+    END,        // ; 
 
-    // (isteğe bağlı) Yorumlar için
+
     COMMENT,     // // yorum
     ROWEND,
     PRINT,
