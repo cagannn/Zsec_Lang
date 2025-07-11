@@ -1,7 +1,0 @@
-int->var_name1=133;
-bool->var_name2=true;
-float->var_name3=32;
-string->varname4="foo";
-func func_name-> int()//fonksiyonun döndüreceği değerin tipi
-{
-}

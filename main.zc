@@ -1,0 +1,7 @@
+int :> a = 23;
+float :> b=3.2;
+
+print("b");
+print(b);
+print("qwert");
+print("qwert123");
