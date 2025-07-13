@@ -29,7 +29,6 @@ impl Parser {
         while self.current_token<self.tokens.len(){
             let token = &self.tokens[self.current_token];
 
-            let mut stmt = ASTNode::default();
 
             match token.token_type {
                 TokenType::INT | TokenType::FLOAT => {
@@ -162,7 +161,7 @@ impl Parser {
         if self.tokens[self.current_token].token_type == TokenType::PRINT{
             if self.tokens[self.current_token+1].token_type == TokenType::LPAR && self.tokens[self.current_token+2].token_type == TokenType::QUOL{
                 if self.tokens[self.current_token+4].token_type == TokenType::QUOL && self.tokens[self.current_token+5].token_type == TokenType::RPAR {
-                    ast.values=self.tokens[self.current_token+3].values.clone().to_string()+key;
+                    ast.values=self.tokens[self.current_token+3].values.to_string()+"\"";
                     self.current_token+=6;
                     return Ok(ast);
                 }
@@ -175,7 +174,7 @@ impl Parser {
             }
             else if self.tokens[self.current_token+1].token_type == TokenType::LPAR && self.tokens[self.current_token+2].token_type == TokenType::IDENTIFIER{
                 if self.tokens[self.current_token+3].token_type == TokenType::RPAR{
-                    ast.values=self.tokens[self.current_token+2].values.clone();
+                    ast.values=self.tokens[self.current_token+2].values.to_string();
                     self.current_token+=4;
                     return Ok(ast);
                 }
