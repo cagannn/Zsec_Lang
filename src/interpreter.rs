@@ -44,33 +44,19 @@ impl Interpreter{
             return mut_node.parse().unwrap();
         }
         else if node.ast_type == ASTType::PrintStmt{
-
-            let mut a = &node.values;
-            let bytes:Vec<u8>=a.bytes().collect();
-            let mut last_w=String::new();
             let mut is_string=false;
-            for mut i in 0..bytes.len(){
-                if bytes[i]==55 && i+8<= bytes.len() { //7
-                    if bytes[i+1]==56 && bytes[i+2]==57 && bytes[i+3]==52 && bytes[i+4]==50 && bytes[i+5]==53 && bytes[i+6]==54 && bytes[i+7]==49 && bytes[i+8]==52 {
-                        is_string=true;
-                    }
-                }
-                if is_string{
-                    break;
-                }
-                else{
-                    last_w.push(bytes[i] as char);
-                }
+            if node.values.get(node.values.len()-1..node.values.len()) == Some("\""){
+                is_string=true;
             }
-            if self.variables.get(a)!=None{
-                println!("{:?}",self.variables.get(a).unwrap());
+            if self.variables.get(&node.values)!=None{
+                println!("{:?}",self.variables.get(&node.values).unwrap());
             }
-            else if self.variables.get(a)==None && is_string==false{
-                eprintln!("There is no variable as {}: {}", a, line);
+            else if self.variables.get(&node.values)==None && is_string==false{
+                eprintln!("There is no variable as {}: {}", node.values, line);
                 process::exit(1);
             }
-            else if self.variables.get(a)==None && is_string==true{
-                println!("{}",last_w);
+            else if self.variables.get(&node.values)==None && is_string==true{
+                println!("{}",node.values.get(0..node.values.len()-1).unwrap());
             }
 
             return 0_f64;
